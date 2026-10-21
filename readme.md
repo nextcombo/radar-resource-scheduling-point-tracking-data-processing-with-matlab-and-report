@@ -1,0 +1,38 @@
+# Radar Resource Scheduling + Point Tracking + Data Processing [with MATLAB and Report]
+
+II. Data Processing for Radar
+Data processing and radar signal processing are both integral components of modern radar systems. Signal processing is used to detect targets, employing certain methods to acquire various useful information about the target. Data processing further processes the point traces and tracks of the target, predicting its future position, forming reliable target track, and thus achieving real-time tracking of the target. This paper utilizes simulated point trace data, sending target information to the track processing module in a specified format, allowing it to perform track-related, filtering, and tracking operations on the target's trajectory, and finally sends the resulting tracked target in a relevant format to the overall system control console for display. The radar data processing workflow is shown in Figure 2.
+2.1 Preprocessing
+The input data for radar data processing often contains interference. Data preprocessing involves screening the data before the data processing process, eliminating those data points that fall outside the threshold, leaving only those data points that pass all decision thresholds. The advantage of data preprocessing is that it significantly reduces the scale of the data during subsequent data processing, significantly decreases computational load, alleviates the burden on computers, enhances data processing speed and target tracking accuracy, and reduces the likelihood of false tracks. The flowchart of data preprocessing is shown in Figure 3. In this paper, the distance threshold for preprocessing is set at 300m~3600000m, with the azimuth and elevation angle thresholds set at 0 ~π rad.
+2.2 Wavefronts are segments of space, generally divided into initial wavefronts and related wavefronts. Initial wavefronts are typically used during the initialization phase of a trajectory, centered around an arbitrary point, defining a spatial range within which the target's observational values might occur. Due to the long distance between the target at the start of a trajectory, it is beneficial to capture the target with larger wavefronts. Related wavefronts are a spatial region centered on the predicted value of the tracked target, specifying the range within which the observed values of the tracked target might occur. The criteria for determining the shape and size of the related wavefronts is that they should have a high probability of containing real observations within them, while also not allowing too many irrelevant observational points in the related wavefront. Generally, the size of the related wavefront should match the type of target, as this paper conducts correlations in polar coordinates, hence using a sector-shaped related wavefront in polar coordinates, as shown in Figure 4.
+2.3 Track Starting The track starting is the first point from when the target falls into the radar detection range to when the track of the target is established. The task of track starting is to quickly establish a track for targets entering the radar's power zone, and to avoid establishing false tracks as much as possible. The trajectory starting algorithm used in this paper is the logic method, also known as the sliding window method. The principle diagram is shown in Figure 5.
+2.4 Data Association When there is only one target in the radar scanning area and no interference, there will be only one point trace within the relevant waveband of the target. At this time, there is no issue with data association. However, when multiple targets appear in the radar scanning area or clutter exists, a single point may fall into multiple wavebands or multiple points may appear within the same waveband, thus involving data association issues. Data association involves determining the relationship between radar observation data at a certain moment and other observation data at other times or existing tracks, thereby achieving the process of matching points with tracks. This paper uses the Nearest Neighbor algorithm for data association, which is a waveband-related method. Its working principle is to establish related wavebands around the step prediction point of the reliable track of the tracked target, specifically applied to the correlation processing of point traces and tracks, as shown in Figure 6.
+2.5 Tracking Filter The tracking filter is an appropriate processing of the data associated with a reliable track, resulting in the formation of a continuous tracking of the target. The Kalman filter algorithm is applied in this paper. Below, a brief introduction will be given, for the sake of simplicity, only the x-axis direction is considered. Firstly, the motion of the target along the axis can be described by the following state equation:
+2.6 Simulation results were used to simulate the radar data processing process in Matlab, which could obtain the starting point of the track as shown in Figure 7, the original track as shown in Figure 8, and then display the direction of the track as shown in Figure 9.
+III. The beam-steering capability of resource scheduling array antennas is a significant characteristic distinguishing phased array radar from other types, and advanced resource scheduling methods are key to leveraging this advantage. The simulation and implementation of the scheduling module are central to the realization of phased array radar. To perform multiple tasks, phased array radar requires the scheduling module to allocate radar time and energy resources among various tasks, thereby achieving optimization of the overall radar performance. This paper employs an adaptive resource scheduling strategy, as shown in Figure 10.
+When using Matlab for simulation experiments, the specific process is depicted in Figure 11. The experimental results are shown in Figure 12.
+IV. Issues: 1. Trajectory simulation is set based on predefined trajectories, which currently has limited capabilities, and does not achieve target tracking trajectory simulation integrated with the entire phased array radar system. 2. The resource scheduling only implements a part of the algorithm flow, and the parts that were not implemented are due to poor display effects, leading to simplification of the algorithm flow.
+
+## Images
+
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](01.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](02.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](03.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](04.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](05.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](06.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](07.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](08.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](09.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](10.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](11.jpg)
+![Radar resource scheduling + point traces + data processing [with MATLAB and report]](12.jpg)
+
+<!-- PAYMENT_BLOCK -->
+
+## Get this dataset
+
+- Payment link (Stripe): [Buy now](https://buy.stripe.com/3cs8yP7sY87d0vu9AB)
+- Payment QR code: ![Payment QR code](pay.png)
+
+<!-- /PAYMENT_BLOCK -->
